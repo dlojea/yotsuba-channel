@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Yotsuba Channel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <div class="titleBanner">
+      <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
+      <span class="new">[<a href="#" onclick="openPost()">New Post</a>]</span>
+      <div class="postForm" id="postForm">
+        <form action="/newPost" method="post">
+          <div>
+            <label for="newSubject">Subject: </label><br>
+            <input type="text" name="newSubject" id="newSubject">
+          </div>
+          <div>
+            <label for="newComment">Comment: </label><br>
+            <textarea name="newComment" id="newComment" rows="4" cols="50"></textarea>
+          </div>
+          <button type="submit">Post</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+    {% if posts.count() > 0 %}
+      {% for post in posts %}
+        <div class="post">
+          <div>
+            <span class="subject">{{post.subject}}</span>
+            <span class="name">Anonymous</span>
+            <span>{{post.hora}}</span>
+            <blockquote>
+              {{post.comment}}
+            </blockquote>
+          </div>
+        </div>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <div><span>No posts yet.</span></div>
+      <hr>
+    {% endif %}
+  </body>
+</html>
