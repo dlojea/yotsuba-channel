@@ -19,19 +19,23 @@ from webapp2_extras import jinja2
 from model.post import Post
 from model.reply import Reply
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         posts = Post.query().order(-Post.hora)
         jinja = jinja2.get_jinja2(app=self.app)
 
         for post in posts:
-            post.replies = Reply.query(Reply.post_id == str(post.key.id())).order(Reply.hora)
+            replies = Reply.query(Reply.post_id == str(post.key.id()))
+            post.replies = replies.order(Reply.hora).fetch()[-5:]
+            post.numOfReplies = replies.count()
 
         template_values = {
             "posts": posts
         }
 
         self.response.write(jinja.render_template("index.html", **template_values))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)

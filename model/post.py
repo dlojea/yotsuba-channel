@@ -7,3 +7,4 @@ class Post(ndb.Model):
     subject = ndb.StringProperty()
     comment = ndb.StringProperty(required=True)
     replies = []
+    numOfReplies = 0

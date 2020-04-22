@@ -9,7 +9,7 @@
   <body>
     <div class="titleBanner">
       <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
-      <span class="new">[<a href="#" onclick="openPost()">New Post</a>]</span>
+      <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Post</a>]</span>
       <div class="postForm" id="postForm">
         <form action="/newPost" method="post">
           <div>
@@ -31,8 +31,8 @@
           <div>
             <span class="subject">{{post.subject}}</span>
             <span class="name">Anonymous</span>
-            <span>{{post.hora}}</span>
-            <span>[<a href="#" onclick="openReply('{{post.key.id()}}')">Reply</a>]</span>
+            <span>{{post.hora.strftime('%Y-%m-%d %H:%M:%S')}}</span>
+            <span>[<a href="javascript:undefined" onclick="openReply('{{post.key.id()}}')">Reply</a>]</span>
             <div class="replyForm" id="replyForm{{post.key.id()}}">
               <form action="/newReply" method="post">
                 <div>
@@ -47,13 +47,15 @@
               {{post.comment}}
             </blockquote>
           </div>
-
           {% if post.replies %}
+            {% if post.numOfReplies > 5%}
+              <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="#">Click here</a> to view.</span>
+            {% endif %}
             {% for reply in post.replies %}
               <div class="post reply">
                 <div>
                   <span class="name">Anonymous</span>
-                  <span>{{reply.hora}}</span>
+                  <span>{{reply.hora.strftime('%Y-%m-%d %H:%M:%S')}}</span>
                 </div>
                 <blockquote>
                   {{reply.comment}}
@@ -65,7 +67,7 @@
         <hr>
       {% endfor %}
     {% else %}
-      <div><span>No posts yet.</span></div>
+      <div><span class="post">No posts yet.</span></div>
       <hr>
     {% endif %}
   </body>
