@@ -31,7 +31,7 @@
           <div>
             <span class="subject">{{post.subject}}</span>
             <span class="name">Anonymous</span>
-            <span>{{post.hora.strftime('%Y-%m-%d %H:%M:%S')}}</span>
+            <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
             <span>[<a href="javascript:undefined" onclick="openReply('{{post.key.id()}}')">Reply</a>]</span>
             <div class="replyForm" id="replyForm{{post.key.id()}}">
               <form action="/newReply" method="post">
@@ -55,7 +55,7 @@
               <div class="post reply">
                 <div>
                   <span class="name">Anonymous</span>
-                  <span>{{reply.hora.strftime('%Y-%m-%d %H:%M:%S')}}</span>
+                  <span>{{reply.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
                 </div>
                 <blockquote>
                   {{reply.comment}}
