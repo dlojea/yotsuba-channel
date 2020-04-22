@@ -32,10 +32,35 @@
             <span class="subject">{{post.subject}}</span>
             <span class="name">Anonymous</span>
             <span>{{post.hora}}</span>
+            <span>[<a href="#" onclick="openReply('{{post.key.id()}}')">Reply</a>]</span>
+            <div class="replyForm" id="replyForm{{post.key.id()}}">
+              <form action="/newReply" method="post">
+                <div>
+                  <label for="newReply">Reply to <span class="name">Anonymus</span></label><br>
+                  <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
+                  <input hidden="hidden" name="post_id" value="{{post.key.id()}}">
+                </div>
+                <button type="submit">Reply</button>
+              </form>
+            </div>
             <blockquote>
               {{post.comment}}
             </blockquote>
           </div>
+
+          {% if post.replies %}
+            {% for reply in post.replies %}
+              <div class="post reply">
+                <div>
+                  <span class="name">Anonymous</span>
+                  <span>{{reply.hora}}</span>
+                </div>
+                <blockquote>
+                  {{reply.comment}}
+                </blockquote>
+              </div>
+            {% endfor %}
+          {% endif %}
         </div>
         <hr>
       {% endfor %}

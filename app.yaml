@@ -21,6 +21,9 @@ handlers:
 - url: /newPost
   script: handlers.newPost.app
 
+- url: /newReply
+  script: handlers.newReply.app
+
 libraries:
 - name: webapp2
   version: "2.5.2"

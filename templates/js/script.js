@@ -7,8 +7,8 @@ function openPost() {
     }
 }
 
-function openReply() {
-    var x = document.getElementById("replyForm");
+function openReply(a) {
+    var x = document.getElementById("replyForm" + a + "");
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {

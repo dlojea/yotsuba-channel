@@ -15,24 +15,20 @@
 # limitations under the License.
 #
 import webapp2
-from webapp2_extras import jinja2
-from model.post import Post
+import time
 from model.reply import Reply
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        posts = Post.query().order(-Post.hora)
-        jinja = jinja2.get_jinja2(app=self.app)
+class ReplyHandler(webapp2.RequestHandler):
+    def post(self):
+        post_id = self.request.get("post_id")
+        comment = self.request.get("newReply")
 
-        for post in posts:
-            post.replies = Reply.query(Reply.post_id == str(post.key.id())).order(Reply.hora)
+        reply = Reply(post_id=post_id, comment=comment)
+        reply.put()
+        time.sleep(1)
 
-        template_values = {
-            "posts": posts
-        }
-
-        self.response.write(jinja.render_template("index.html", **template_values))
+        self.redirect("/")
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/newReply', ReplyHandler)
 ], debug=True)

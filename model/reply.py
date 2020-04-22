@@ -1,9 +1,8 @@
-# Post
+# Reply
 
 from google.appengine.ext import ndb
 
-class Post(ndb.Model):
+class Reply(ndb.Model):
     hora = ndb.DateTimeProperty(auto_now_add=True, indexed=True)
-    subject = ndb.StringProperty()
+    post_id = ndb.StringProperty(required=True)
     comment = ndb.StringProperty(required=True)
-    replies = []
