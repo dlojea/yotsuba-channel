@@ -18,7 +18,7 @@ import webapp2
 import time
 from model.post import Post
 
-class PostHandler(webapp2.RequestHandler):
+class CreatePosttHandler(webapp2.RequestHandler):
     def post(self):
         subject = self.request.get("newSubject")
         comment = self.request.get("newComment")
@@ -30,5 +30,5 @@ class PostHandler(webapp2.RequestHandler):
         self.redirect("/")
 
 app = webapp2.WSGIApplication([
-    ('/newPost', PostHandler)
+    ('/post/create', CreatePosttHandler)
 ], debug=True)

@@ -16,12 +16,17 @@
 #
 import webapp2
 import time
+
+from google.appengine.ext import ndb
+
 from model.reply import Reply
 
-class ReplyHandler(webapp2.RequestHandler):
+class CreateReplyHandler(webapp2.RequestHandler):
     def post(self):
         post_id = self.request.get("post_id")
         comment = self.request.get("newReply")
+
+        post_id = ndb.Key(urlsafe=post_id)
 
         reply = Reply(post_id=post_id, comment=comment)
         reply.put()
@@ -30,5 +35,5 @@ class ReplyHandler(webapp2.RequestHandler):
         self.redirect("/")
 
 app = webapp2.WSGIApplication([
-    ('/newReply', ReplyHandler)
+    ('/reply/create', CreateReplyHandler)
 ], debug=True)
