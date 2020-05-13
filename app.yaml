@@ -20,12 +20,15 @@ handlers:
 
 - url: /post/create
   script: handlers.post.create.app
+  login: required
 
 - url: /post/show
   script: handlers.post.show.app
+  login: required
 
 - url: /reply/create
   script: handlers.reply.create.app
+  login: required
 
 libraries:
 - name: webapp2

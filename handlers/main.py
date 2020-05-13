@@ -16,22 +16,38 @@
 #
 import webapp2
 from webapp2_extras import jinja2
+from webapp2_extras.users import users
 from model.post import Post
 from model.reply import Reply
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        posts = Post.query().order(-Post.hora)
+        user = users.get_current_user()
 
-        for post in posts:
-            replies = Reply.query(Reply.post_id == post.key)
-            post.replies = replies.order(Reply.hora).fetch()[-5:]
-            post.numOfReplies = replies.count()
+        if user:
+            url_user = users.create_logout_url("/")
+            user = str(user)
 
-        template_values = {
-            "posts": posts
-        }
+            posts = Post.query().order(-Post.hora)
+
+            for post in posts:
+                replies = Reply.query(Reply.post_id == post.key)
+                post.replies = replies.order(Reply.hora).fetch()[-5:]
+                post.numOfReplies = replies.count()
+
+            template_values = {
+                "user": user,
+                "url_user": url_user,
+                "posts": posts
+            }
+        else:
+            url_user = users.create_login_url("/")
+
+            template_values = {
+                "user": user,
+                "url_user": url_user
+            }
 
         jinja = jinja2.get_jinja2(app=self.app)
         self.response.write(jinja.render_template("index.html", **template_values))

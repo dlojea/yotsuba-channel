@@ -66,3 +66,7 @@ span.new {
 textarea {
     resize: vertical;
 }
+
+#navTopRight {
+    float: right;
+}

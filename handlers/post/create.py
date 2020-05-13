@@ -16,14 +16,16 @@
 #
 import webapp2
 import time
+from webapp2_extras.users import users
 from model.post import Post
 
 class CreatePosttHandler(webapp2.RequestHandler):
     def post(self):
         subject = self.request.get("newSubject")
         comment = self.request.get("newComment")
+        user = str(users.get_current_user().email())
 
-        post = Post(subject=subject, comment=comment)
+        post = Post(subject=subject, comment=comment, user=user)
         post.put()
         time.sleep(1)
 

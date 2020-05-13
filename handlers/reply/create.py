@@ -18,17 +18,18 @@ import webapp2
 import time
 
 from google.appengine.ext import ndb
-
+from webapp2_extras.users import users
 from model.reply import Reply
 
 class CreateReplyHandler(webapp2.RequestHandler):
     def post(self):
         post_id = self.request.get("post_id")
         comment = self.request.get("newReply")
+        user = str(users.get_current_user().email())
 
         post_id = ndb.Key(urlsafe=post_id)
 
-        reply = Reply(post_id=post_id, comment=comment)
+        reply = Reply(post_id=post_id, comment=comment, user=user)
         reply.put()
         time.sleep(1)
 
