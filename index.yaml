@@ -20,3 +20,8 @@ indexes:
   - name: post_id
   - name: hora
     direction: desc
+
+- kind: Reply
+  properties:
+  - name: post_key
+  - name: hora
