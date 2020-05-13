@@ -18,11 +18,14 @@ handlers:
 - url: /
   script: handlers.main.app
 
-- url: /newPost
-  script: handlers.newPost.app
+- url: /post/create
+  script: handlers.post.create.app
 
-- url: /newReply
-  script: handlers.newReply.app
+- url: /post/show
+  script: handlers.post.show.app
+
+- url: /reply/create
+  script: handlers.reply.create.app
 
 libraries:
 - name: webapp2
