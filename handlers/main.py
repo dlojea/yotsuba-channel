@@ -23,10 +23,9 @@ from model.reply import Reply
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         posts = Post.query().order(-Post.hora)
-        jinja = jinja2.get_jinja2(app=self.app)
 
         for post in posts:
-            replies = Reply.query(Reply.post_id == str(post.key.id()))
+            replies = Reply.query(Reply.post_id == post.key)
             post.replies = replies.order(Reply.hora).fetch()[-5:]
             post.numOfReplies = replies.count()
 
@@ -34,6 +33,7 @@ class MainHandler(webapp2.RequestHandler):
             "posts": posts
         }
 
+        jinja = jinja2.get_jinja2(app=self.app)
         self.response.write(jinja.render_template("index.html", **template_values))
 
 

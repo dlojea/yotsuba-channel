@@ -11,7 +11,7 @@
       <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
       <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Post</a>]</span>
       <div class="postForm" id="postForm">
-        <form action="/newPost" method="post">
+        <form action="/post/create" method="post">
           <div>
             <label for="newSubject">Subject: </label><br>
             <input type="text" name="newSubject" id="newSubject">
@@ -32,13 +32,13 @@
             <span class="subject">{{post.subject}}</span>
             <span class="name">Anonymous</span>
             <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-            <span>[<a href="javascript:undefined" onclick="openReply('{{post.key.id()}}')">Reply</a>]</span>
-            <div class="replyForm" id="replyForm{{post.key.id()}}">
-              <form action="/newReply" method="post">
+            <span>[<a href="javascript:undefined" onclick="openReply('{{post.key.urlsafe()}}')">Reply</a>]</span>
+            <div class="replyForm" id="replyForm{{post.key.urlsafe()}}">
+              <form action="/reply/create" method="post">
                 <div>
                   <label for="newReply">Reply to <span class="name">Anonymus</span></label><br>
                   <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
-                  <input hidden="hidden" name="post_id" value="{{post.key.id()}}">
+                  <input hidden="hidden" name="post_id" value="{{post.key.urlsafe()}}">
                 </div>
                 <button type="submit">Reply</button>
               </form>
@@ -49,7 +49,7 @@
           </div>
           {% if post.replies %}
             {% if post.numOfReplies > 5%}
-              <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="#">Click here</a> to view.</span>
+              <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="/post/show?id={{post.key.urlsafe()}}">Click here</a> to view.</span>
             {% endif %}
             {% for reply in post.replies %}
               <div class="post reply">
