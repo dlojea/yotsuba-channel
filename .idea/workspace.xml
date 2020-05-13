@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed14663f-bdb0-44bf-9a95-9b4122f7d47a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/handlers/post/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/post/show.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/reply/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post_show.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/newPost.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/post/create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/newReply.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/reply/create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/reply.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +45,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Consultorio-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\handlers\reply" />
+      <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\handlers\post" />
       <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\handlers" />
       <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\templates\js" />
       <recent name="D:\Users\Dani\Documentos\ESEi\ALS\proyecto\yotsuba-channel\templates\css" />
@@ -70,7 +87,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587489084176</updated>
-      <workItem from="1587489104227" duration="20200000" />
+      <workItem from="1587489104227" duration="22947000" />
+      <workItem from="1587996693283" duration="7393000" />
+      <workItem from="1589379411537" duration="6396000" />
     </task>
     <servers />
   </component>
@@ -82,28 +101,32 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="722" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587586936030" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1587494765517">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589383948615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587494765517" />
-    <state width="916" height="281" key="GridCell.Tab.0.bottom" timestamp="1587584108352">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589383948615" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1589382957053">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587584108352" />
-    <state width="916" height="281" key="GridCell.Tab.0.center" timestamp="1587584108352">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589382957053" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1589382957052">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587584108352" />
-    <state width="916" height="281" key="GridCell.Tab.0.left" timestamp="1587584108352">
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589382957052" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1589382957052">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587584108352" />
-    <state width="916" height="281" key="GridCell.Tab.0.right" timestamp="1587584108352">
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589382957052" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1589382957053">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587584108352" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589382957053" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587998671341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587998671341" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yotsuba_channel$yotsuba_channel.coverage" NAME="yotsuba-channel Coverage Results" MODIFIED="1587584108333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/yotsuba_channel$yotsuba_channel.coverage" NAME="yotsuba-channel Coverage Results" MODIFIED="1589380554378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
