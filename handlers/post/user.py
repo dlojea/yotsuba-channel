@@ -17,6 +17,8 @@
 import webapp2
 from webapp2_extras import jinja2
 from webapp2_extras.users import users
+
+from model.like import Like
 from model.post import Post
 from model.reply import Reply
 
@@ -32,6 +34,11 @@ class UserPostsHandler(webapp2.RequestHandler):
             replies = Reply.get_replies(post.key)
             post.replies = replies.fetch()[-5:]
             post.numOfReplies = replies.count()
+            post.likes = Like.get_all(post.key)
+            if any(like.user == user for like in post.likes):
+                post.liked = "unlike"
+            else:
+                post.liked = "like"
 
         template_values = {
             "user": user,

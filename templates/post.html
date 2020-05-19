@@ -1,8 +1,13 @@
 <div>
-    <span class="subject">{{post.subject}}</span>
-    <span class="name">{{post.user.split("@")[0]}}</span>
-    <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-    <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Reply</a>]</span>
+    <form action="/like/{{post.liked}}" method="post">
+        <span class="subject">{{post.subject}}</span>
+        <span class="name">{{post.user.split("@")[0]}}</span>
+        <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
+        <span>{{post.likes.count()}} Likes</span>
+        <span>[<a href="javascript:undefined" onclick="this.closest('form').submit();return false;">{{post.liked.title()}}</a>]</span>
+        <input hidden="hidden" name="id" value="{{post.key.urlsafe()}}">
+        <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Show</a>]</span>
+    </form>
     <blockquote>
       {{post.comment}}
     </blockquote>

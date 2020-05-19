@@ -34,6 +34,15 @@ handlers:
   script: handlers.reply.create.app
   login: required
 
+- url: /like/like
+  script: handlers.like.like.app
+  login: required
+
+- url: /like/unlike
+  script: handlers.like.unlike.app
+  login: required
+
+
 libraries:
 - name: webapp2
   version: "2.5.2"

@@ -12,6 +12,8 @@ class Post(ndb.Model):
     replies = []
     numOfReplies = 0
 
+    likes = []
+
     @staticmethod
     def get(id):
         return ndb.Key(urlsafe=id).get()

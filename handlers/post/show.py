@@ -17,11 +17,13 @@
 import webapp2
 from webapp2_extras import jinja2
 from webapp2_extras.users import users
+
+from model.like import Like
 from model.post import Post
 from model.reply import Reply
 
 
-class PostShownHandler(webapp2.RequestHandler):
+class PostShowHandler(webapp2.RequestHandler):
     def get(self):
         user = str(users.get_current_user().email())
         url_user = users.create_logout_url("/")
@@ -30,6 +32,11 @@ class PostShownHandler(webapp2.RequestHandler):
 
         post = Post.get(post_id)
         replies = Reply.get_replies(post.key)
+        post.likes = Like.get_all(post.key)
+        if any(like.user == user for like in post.likes):
+            post.liked = "unlike"
+        else:
+            post.liked = "like"
 
         template_values = {
             "post": post,
@@ -43,5 +50,5 @@ class PostShownHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/post/show', PostShownHandler)
+    ('/post/show', PostShowHandler)
 ], debug=True)
