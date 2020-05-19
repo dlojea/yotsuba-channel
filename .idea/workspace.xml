@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed14663f-bdb0-44bf-9a95-9b4122f7d47a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handlers/post/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/banner.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/reply.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/post/show.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/post/show.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/reply/create.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/reply/create.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/index.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/post.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/reply.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/post_show.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post_show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -90,7 +85,7 @@
       <workItem from="1589379411537" duration="11662000" />
       <workItem from="1589555642513" duration="600000" />
       <workItem from="1589818713679" duration="1168000" />
-      <workItem from="1589898143959" duration="6655000" />
+      <workItem from="1589898143959" duration="8566000" />
     </task>
     <servers />
   </component>
@@ -98,30 +93,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="722" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587586936030">
+    <state x="552" y="178" key="#HTML" timestamp="1589924128774">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="722" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1587586936030" />
+    <state x="552" y="178" key="#HTML/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589924128774" />
+    <state x="722" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589923696606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="722" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589923696606" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589383948615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589383948615" />
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1589919809210">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1589922795849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589919809210" />
-    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1589919809209">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589922795849" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1589922795848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589919809209" />
-    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1589919809209">
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589922795848" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1589922795848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589919809209" />
-    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1589919809209">
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589922795848" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1589922795849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589919809209" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.0.1366.728@0.0.1920.1040" timestamp="1589922795849" />
     <state x="710" y="231" key="RollbackChangesDialog" timestamp="1589919731770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
