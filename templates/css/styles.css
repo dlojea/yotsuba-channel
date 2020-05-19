@@ -52,17 +52,6 @@ span.new {
     display: none;
 }
 
-.replyForm {
-    display: none;
-    float: right;
-    border: 1px solid #b7c5d9;
-    background-color: #d6daf0;
-    border-left: none;
-    border-top: none;
-    margin-left: 10px;
-    padding: 5px;
-}
-
 textarea {
     resize: vertical;
 }
