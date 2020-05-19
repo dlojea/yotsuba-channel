@@ -1,0 +1,9 @@
+ <div class="post reply">
+    <div>
+        <span class="name">{{reply.user.split("@")[0]}}</span>
+        <span>{{reply.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
+    </div>
+    <blockquote>
+        {{reply.comment}}
+    </blockquote>
+</div>

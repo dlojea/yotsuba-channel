@@ -1,57 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title >Yotsuba Channel</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/script.js"></script>
-  </head>
-  <body>
+{% extends "base_template.html" %}
+
+{% block content %}
     <div class="titleBanner">
-      <span id="navTopRight">
-        <span>Welcome, <span class="name">{{user.split("@")[0]}}</span></span>
-        <span>[<a href="/">Main page</a>]</span>
-        <span>[<a href="/post/user">Your posts</a>]</span>
-        <span>[<a href="{{url_user}}">Log out</a>]</span>
-      </span>
-      <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
-      <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Reply</a>]</span>
-      <div class="postForm" id="postForm">
-        <form action="/reply/create" method="post">
-          <div>
-              <label for="newReply">Reply to <span class="name">Anonymus</span></label><br>
-              <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
-              <input hidden="hidden" name="id" value="{{post.key.urlsafe()}}">
-          </div>
-          <button type="submit">Reply</button>
-        </form>
-      </div>
+        {% include "banner.html" %}
+        <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Reply</a>]</span>
+        <div class="postForm" id="postForm">
+            <form action="/reply/create" method="post">
+                <div>
+                    <label for="newReply">Reply to <span class="name">{{user.split("@")[0]}}</span></label><br>
+                    <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
+                    <input hidden="hidden" name="id" value="{{post.key.urlsafe()}}">
+                </div>
+                <button type="submit">Reply</button>
+            </form>
+        </div>
     </div>
     <hr>
-      <div class="post">
-        <div>
-          <span class="subject">{{post.subject}}</span>
-          <span class="name">{{user.split("@")[0]}}</span>
-          <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-          <span>[<a href="javascript:undefined" onclick="openPost()">Reply</a>]</span>
-          <blockquote>
-            {{post.comment}}
-          </blockquote>
-        </div>
+    <div class="post">
+        {% include "post.html" %}
         {% if replies %}
-          {% for reply in replies %}
-            <div class="post reply">
-              <div>
-                <span class="name">{{reply.user.split("@")[0]}}</span>
-                <span>{{reply.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-              </div>
-              <blockquote>
-                {{reply.comment}}
-              </blockquote>
-            </div>
-          {% endfor %}
+            {% for reply in replies %}
+                {% include "reply.html" %}
+            {% endfor %}
         {% endif %}
-      </div>
-      <hr>
-  </body>
-</html>
+    </div>
+    <hr>
+{% endblock %}

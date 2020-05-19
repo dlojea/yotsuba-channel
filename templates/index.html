@@ -1,77 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Yotsuba Channel</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/script.js"></script>
-  </head>
+{% extends "base_template.html" %}
+
+{% block content %}
     {% if user %}
-    <div class="titleBanner">
-       <span id="navTopRight">
-          <span>Welcome, <span class="name">{{user.split("@")[0]}}</span></span>
-          <span>[<a href="/">Main page</a>]</span>
-          <span>[<a href="/post/user">Your posts</a>]</span>
-          <span>[<a href="{{url_user}}">Log out</a>]</span>
-        </span>
-      <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
-        <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Post</a>]</span>
-        <div class="postForm" id="postForm">
-          <form action="/post/create" method="post">
-            <div>
-              <label for="newSubject">Subject: </label><br>
-              <input type="text" name="newSubject" id="newSubject">
+        <div class="titleBanner">
+            {% include "banner.html" %}
+            <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Post</a>]</span>
+            <div class="postForm" id="postForm">
+                <form action="/post/create" method="post">
+                    <div>
+                        <label for="newSubject">Subject: </label><br>
+                        <input type="text" name="newSubject" id="newSubject">
+                    </div>
+                    <div>
+                        <label for="newComment">Comment: </label><br>
+                        <textarea name="newComment" id="newComment" rows="4" cols="50"></textarea>
+                    </div>
+                    <button type="submit">Post</button>
+                </form>
             </div>
-            <div>
-              <label for="newComment">Comment: </label><br>
-              <textarea name="newComment" id="newComment" rows="4" cols="50"></textarea>
-            </div>
-            <button type="submit">Post</button>
-          </form>
         </div>
-      </div>
-      <hr>
-      {% if posts.count() > 0 %}
-        {% for post in posts %}
-          <div class="post">
-            <div>
-              <span class="subject">{{post.subject}}</span>
-              <span class="name">{{post.user.split("@")[0]}}</span>
-              <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-              <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Reply</a>]</span>
-              <blockquote>
-                {{post.comment}}
-              </blockquote>
-            </div>
-            {% if post.replies %}
-              {% if post.numOfReplies > 5%}
-                <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="/post/show?id={{post.key.urlsafe()}}">Click here</a> to view.</span>
-              {% endif %}
-              {% for reply in post.replies %}
-                <div class="post reply">
-                  <div>
-                    <span class="name">{{reply.user.split("@")[0]}}</span>
-                    <span>{{reply.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-                  </div>
-                  <blockquote>
-                    {{reply.comment}}
-                  </blockquote>
-                </div>
-              {% endfor %}
-            {% endif %}
-          </div>
-          <hr>
-        {% endfor %}
-      {% else %}
-        <div><span class="post">No posts yet.</span></div>
         <hr>
-      {% endif %}
+        {% if posts.count() > 0 %}
+            {% for post in posts %}
+                <div class="post">
+                    {% include "post.html" %}
+                    {% if post.replies %}
+                        {% if post.numOfReplies > 5%}
+                            <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="/post/show?id={{post.key.urlsafe()}}">Click here</a> to view.</span>
+                        {% endif %}
+                        {% for reply in post.replies %}
+                           {% include "reply.html" %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <div><span class="post">No posts yet.</span></div>
+            <hr>
+        {% endif %}
     {% else %}
-    <div class="titleBanner">
-      <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
-      <span class="new">[<a href="{{url_user}}">Log in</a>]</span>
-    </div>
-    <hr>
+        <div class="titleBanner">
+            <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
+            <span class="new">[<a href="{{url_user}}">Log in</a>]</span>
+        </div>
+        <hr>
     {% endif %}
-  </body>
-</html>
+{% endblock %}

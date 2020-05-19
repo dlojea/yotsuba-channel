@@ -1,0 +1,9 @@
+<div>
+    <span class="subject">{{post.subject}}</span>
+    <span class="name">{{post.user.split("@")[0]}}</span>
+    <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
+    <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Reply</a>]</span>
+    <blockquote>
+      {{post.comment}}
+    </blockquote>
+</div>
