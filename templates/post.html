@@ -3,11 +3,22 @@
         <span class="subject">{{post.subject}}</span>
         <span class="name">{{post.user.split("@")[0]}}</span>
         <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-        <span>{{post.likes.count()}} Likes</span>
+        <span><a href="javascript:undefined" onclick="openLikes('{{post.key.urlsafe()}}')">{{post.likes.count()}}</a> Likes</span>
         <span>[<a href="javascript:undefined" onclick="this.closest('form').submit();return false;">{{post.liked.title()}}</a>]</span>
         <input hidden="hidden" name="id" value="{{post.key.urlsafe()}}">
         <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Show</a>]</span>
     </form>
+    {% if post.likes.count() > 0 %}
+        <div class="likesList" id="likesList{{post.key.urlsafe()}}">
+            <span class="subject">{{post.subject}}</span>
+            <span>liked by: </span>
+            {% for like in post.likes %}
+                <blockquote class="name">
+                    {{like.user.split("@")[0]}}
+                </blockquote>
+            {% endfor %}
+        </div>
+    {% endif %}
     <blockquote>
       {{post.comment}}
     </blockquote>

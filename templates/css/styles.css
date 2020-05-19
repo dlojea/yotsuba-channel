@@ -9,15 +9,15 @@ body {
     padding-left: 5px;
     padding-right: 5px;
 }
-span.subject {
+.subject {
     color: #06034d;
     font-weight: 700;
 }
-span.name {
+.name {
     color: #117743;
     font-weight: 700
 }
-span.title {
+.title {
     font-family: Tahoma,sans-serif;
     font-size: 28px;
     font-weight: 700;
@@ -25,7 +25,7 @@ span.title {
     margin-top: 0;
     color: #af0a0f;
 }
-span.new {
+.new {
     font-size: 22px;
     font-weight: 700;
     text-align: center;
@@ -58,4 +58,15 @@ textarea {
 
 #navTopRight {
     float: right;
+}
+
+.likesList {
+    display: none;
+    float: right;
+    border: 1px solid #b7c5d9;
+    background-color: #d6daf0;
+    border-left: none;
+    border-top: none;
+    margin-left: 10px;
+    padding: 5px;
 }
