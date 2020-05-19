@@ -21,27 +21,28 @@ from model.post import Post
 from model.reply import Reply
 
 
-class PostShownHandler(webapp2.RequestHandler):
+class UserPostsHandler(webapp2.RequestHandler):
     def get(self):
         user = str(users.get_current_user().email())
         url_user = users.create_logout_url("/")
 
-        post_id = self.request.GET["id"]
+        posts = Post.get_user_posts(user)
 
-        post = Post.get(post_id)
-        replies = Reply.get_replies(post.key)
+        for post in posts:
+            replies = Reply.get_replies(post.key)
+            post.replies = replies.fetch()[-5:]
+            post.numOfReplies = replies.count()
 
         template_values = {
-            "post": post,
-            "replies": replies,
             "user": user,
-            "url_user": url_user
+            "url_user": url_user,
+            "posts": posts
         }
 
         jinja = jinja2.get_jinja2(app=self.app)
-        self.response.write(jinja.render_template("post_show.html", **template_values))
+        self.response.write(jinja.render_template("index.html", **template_values))
 
 
 app = webapp2.WSGIApplication([
-    ('/post/show', PostShownHandler)
+    ('/post/user', UserPostsHandler)
 ], debug=True)

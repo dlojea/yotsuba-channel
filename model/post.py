@@ -13,10 +13,9 @@ class Post(ndb.Model):
     numOfReplies = 0
 
     @staticmethod
-    def get(request):
-        try:
-            id = request.GET["id"]
-        except KeyError:
-            id = ""
-
+    def get(id):
         return ndb.Key(urlsafe=id).get()
+
+    @staticmethod
+    def get_user_posts(user):
+        return Post.query(Post.user == user).order(-Post.hora)

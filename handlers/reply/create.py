@@ -17,23 +17,24 @@
 import webapp2
 import time
 
-from google.appengine.ext import ndb
 from webapp2_extras.users import users
+
+from model.post import Post
 from model.reply import Reply
 
 class CreateReplyHandler(webapp2.RequestHandler):
     def post(self):
-        post_id = self.request.get("post_id")
+        post_id = self.request.get("id")
         comment = self.request.get("newReply")
         user = str(users.get_current_user().email())
 
-        post_id = ndb.Key(urlsafe=post_id)
+        post_key = Post.get(post_id).key
 
-        reply = Reply(post_id=post_id, comment=comment, user=user)
+        reply = Reply(post_id=post_key, comment=comment, user=user)
         reply.put()
         time.sleep(1)
 
-        self.redirect("/")
+        self.redirect("/post/show?id=" + post_id)
 
 app = webapp2.WSGIApplication([
     ('/reply/create', CreateReplyHandler)

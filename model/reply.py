@@ -10,4 +10,7 @@ class Reply(ndb.Model):
     user = ndb.StringProperty(required=True)
     post_id = ndb.KeyProperty(kind=Post)
 
+    @staticmethod
+    def get_replies(post_id):
+        return Reply.query(Reply.post_id == post_id).order(Reply.hora)
 
