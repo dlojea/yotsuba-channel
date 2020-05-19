@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Yotsuba Channel</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js"></script>
   </head>
     {% if user %}
     <div class="titleBanner">
        <span id="navTopRight">
           <span>Welcome, <span class="name">{{user.split("@")[0]}}</span></span>
+          <span>[<a href="/">Main page</a>]</span>
+          <span>[<a href="/post/user">Your posts</a>]</span>
           <span>[<a href="{{url_user}}">Log out</a>]</span>
         </span>
       <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
@@ -36,17 +38,7 @@
               <span class="subject">{{post.subject}}</span>
               <span class="name">{{post.user.split("@")[0]}}</span>
               <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
-              <span>[<a href="javascript:undefined" onclick="openReply('{{post.key.urlsafe()}}')">Reply</a>]</span>
-              <div class="replyForm" id="replyForm{{post.key.urlsafe()}}">
-                <form action="/reply/create" method="post">
-                  <div>
-                    <label for="newReply">Reply to <span class="name">{{post.user.split("@")[0]}}</span></label><br>
-                    <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
-                    <input hidden="hidden" name="post_id" value="{{post.key.urlsafe()}}">
-                  </div>
-                  <button type="submit">Reply</button>
-                </form>
-              </div>
+              <span>[<a href="/post/show?id={{post.key.urlsafe()}}">Reply</a>]</span>
               <blockquote>
                 {{post.comment}}
               </blockquote>
@@ -54,8 +46,6 @@
             {% if post.replies %}
               {% if post.numOfReplies > 5%}
                 <span class="post">{{post.numOfReplies - 5}} replies omitted. <a href="/post/show?id={{post.key.urlsafe()}}">Click here</a> to view.</span>
-              {% else %}
-                <span class="post"><a href="/post/show?id={{post.key.urlsafe()}}">Click here</a> to view.</span>
               {% endif %}
               {% for reply in post.replies %}
                 <div class="post reply">

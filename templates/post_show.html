@@ -8,6 +8,12 @@
   </head>
   <body>
     <div class="titleBanner">
+      <span id="navTopRight">
+        <span>Welcome, <span class="name">{{user.split("@")[0]}}</span></span>
+        <span>[<a href="/">Main page</a>]</span>
+        <span>[<a href="/post/user">Your posts</a>]</span>
+        <span>[<a href="{{url_user}}">Log out</a>]</span>
+      </span>
       <span class="title">Yotsuba Channel よつば☆ちゃんねる</span><br>
       <span class="new">[<a href="javascript:undefined" onclick="openPost()">New Reply</a>]</span>
       <div class="postForm" id="postForm">
@@ -15,19 +21,17 @@
           <div>
               <label for="newReply">Reply to <span class="name">Anonymus</span></label><br>
               <textarea name="newReply" id="newReply" rows="4" cols="50"></textarea>
-              <input hidden="hidden" name="post_id" value="{{post.key.urlsafe()}}">
+              <input hidden="hidden" name="id" value="{{post.key.urlsafe()}}">
           </div>
           <button type="submit">Reply</button>
         </form>
       </div>
     </div>
     <hr>
-    <span>[<a href="/">Return</a>]</span>
-    <hr>
       <div class="post">
         <div>
           <span class="subject">{{post.subject}}</span>
-          <span class="name">{{post.user}}</span>
+          <span class="name">{{user.split("@")[0]}}</span>
           <span>{{post.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
           <span>[<a href="javascript:undefined" onclick="openPost()">Reply</a>]</span>
           <blockquote>
@@ -38,7 +42,7 @@
           {% for reply in replies %}
             <div class="post reply">
               <div>
-                <span class="name">Anonymous</span>
+                <span class="name">{{reply.user.split("@")[0]}}</span>
                 <span>{{reply.hora.strftime('%Y-%m-%d(%a) %H:%M:%S')}}</span>
               </div>
               <blockquote>
